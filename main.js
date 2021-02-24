@@ -1,4 +1,4 @@
-const SHA256 = require('crypto-js/sha256');
+import sha256 from "crypto-js/sha256.js";
 
 class Transaction {
     constructor(fromAddress, toAddress, amount) {
@@ -18,7 +18,7 @@ class Block {
     }
 
     calculateHash() {        
-        return SHA256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString();
+        return sha256(this.index + this.previousHash + this.timestamp + JSON.stringify(this.data) + this.nonce).toString();
     }
 
     mineBlock(difficulty) {
